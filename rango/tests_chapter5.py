@@ -20,10 +20,11 @@
 import os
 import warnings
 import importlib
-
+"""
 os.environ.setdefault('DJANGO_SETTINGS_MODULE','tango_with_django_project.settings')
 import django
 django.setup()
+"""
 from rango.models import Category, Page#注意书里面population inport这两个的时候就设置了上面的环境变量
 
 
