@@ -1,13 +1,13 @@
-<!DOCTYPE html>
 
-{% load staticfiles %} <!-- New line 这让我们可以使用static template tag 也就是img src里面的 -->
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
 
-<html>
-    <head>
-        <title>Rango</title>
-    </head>
-    <body>
-        <h1>Rango says...</h1>
+{% block title_block %}
+    Homepage
+{% endblock %}
+
+{% block body_block %}
+    <h1>Rango says...</h1>
         <div>
             hey there partner! <br />
             <strong>{{ boldmessage }}</strong><br />
@@ -18,10 +18,16 @@
         {% if categories %}
             
             <ul>
-            {% for category in categories %}<!--语法还不是很清楚-->
-                <!--<li>{{ category.name }}</li> 为什么循环里是一个括号，这里是两个括号，因为两层花括号就是匹配变量？ -->
+            {% for category in categories %}
+                <!--<li>{{ category.name }}</li> -->
                 <!-- The following line is changed to add an HTML hyperlink -->
-                <li><a href="/rango/category/{{ category.slug }}/">{{ category.name }}</a></li>   
+                <!-- <li><a href="/rango/category/{{ category.slug }}/">{{ category.name }}</a></li>   -->
+                <li>
+                    <a href="{% url 'rango:show_category' category.slug %}">
+                    {{ category.name }}
+                    </a>
+                </li>
+                    
             {% endfor %}
             </ul>
          {% else %}
@@ -44,16 +50,11 @@
         </div>>
 
         <div>
-            <a href="/rango/about/">About</a><br />
-            <a href="/rango/add_category/">Add a New Category</a><br />
 
             <img src="{% static 'images/rango.jpg' %}"
             alt="Picture of Rango" /> <!-- New line -->
 
             
         </div>
-        <div>
-            
-        </div>
-    </body>
-</html>
+{% endblock %}
+   

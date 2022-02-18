@@ -41,16 +41,24 @@ def index(request):
     context_dict['pages'] = page_list
     # Render the response and send it back!
     return render(request, 'rango/index.html', context=context_dict)
+    #return render(request, reverse('rango:index'), context=context_dict)
 
 """
 def about(request):
     #return HttpResponse(""<a href="http://127.0.0.1:8000/">HttpResponse: 'Rango says here is the about page.'"")
     return HttpResponse("<a href='/rango/'>Index</a> Rango says here is the about page.")
-"""
+
 def about(request):
-    #return HttpResponse("""<a href="http://127.0.0.1:8000/">HttpResponse: 'Rango says here is the about page.'""")
+    #return HttpResponse(""<a href="http://127.0.0.1:8000/">HttpResponse: 'Rango says here is the about page.'"")
     context_dict = {'boldmessage': 'This tutorial has been put together by YuHeng OuYang'}
     return render(request, 'rango/about.html',context=context_dict)
+"""
+def about(request):
+    # prints out whether the method is a GET or a POST
+    print(request.method)
+    # prints out the user name, if no one is logged in it prints `AnonymousUser`
+    print(request.user)
+    return render(request, 'rango/about.html', {})
 
 
 def show_category(request, category_name_slug):
