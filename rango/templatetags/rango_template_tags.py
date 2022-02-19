@@ -7,11 +7,11 @@ register = template.Library()
 def get_category_list(current_category=None):
     return {'categories': Category.objects.all(),
             'current_category': current_category}
+
+
 """
 This new template is used by the Django template engine to render
 the list of categories you provide in the dictionary that is returned in the function.
 This rendered list can then be injected into the response of the view that initially
 called the template tag!
 """
-
-
